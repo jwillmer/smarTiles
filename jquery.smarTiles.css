@@ -2,6 +2,8 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
+    font-family: "Segoe UI", "Segoe WP", "Helvetica Neue", 'RobotoRegular', sans-serif;
+    font-size: 14px; /* baseFontSize */
 }
 
 .st_tile {
@@ -27,20 +29,43 @@
         cursor: pointer;
     }
 
-    .st_tile h1, .st_tile h2, .st_tile h3, .st_tile h4, .st_tile h5, .st_tile h6 {
+    .st_tile h1,
+    .st_tile h2,
+    .st_tile h3,
+    .st_tile h4,
+    .st_tile h5,
+    .st_tile h6 {
+        font-family: "Segoe UI Light", "Helvetica Neue", 'RobotoLight', "Segoe UI", "Segoe WP", sans-serif; /* headingfonts */
         color: white;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        font-weight: 100;
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+
+    .st_tile h4,
+    .st_tile h5,
+    .st_tile h6 {
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+
+    .st_tile h1 {
+        font-size: 56px; /* baseFontSize * 4 */
     }
 
     .st_tile h2 {
-        font-size: 1.75em;
+        font-size: 42px; /* baseFontSize * 3 */
         margin-top: 10px; /* tilemargin */
         margin-left: 0px;
     }
 
+    .st_tile h3 {
+        font-size: 28px; /* baseFontSize * 2 */
+    }
 
     .st_tile .st_tileContentPlain {
         width: 100%;
@@ -158,7 +183,7 @@
         left: 0;
         right: 0;
         text-align: left;
-        font-size: 16px; /* h3 font size*/
+        font-size: 28px; /* h3 font size*/
         padding: 3px 8px;
     }
 
@@ -240,20 +265,20 @@
 }
 
 .st_bgRed .st_textBg {
-    background-color: red;
+    background-color: darkred;
 }
 
 .st_bgRed .st_active-li:hover {
-    background-color: red;
+    background-color: darkred;
     color: white;
 }
 
 .st_bgBlue .st_textBg {
-    background-color: darkblue;
+    background-color: royalblue;
 }
 
 .st_bgBlue .st_active-li:hover {
-    background-color: darkblue;
+    background-color: royalblue;
     color: white;
 }
 
@@ -304,11 +329,11 @@
 
 .st_two-v {
     width: 250px; /* tilebasewidth */
-    height: 520px; /* (tilebasewidth + tilemargin) * 2 */
+    height: 510px; /* (tilebasewidth * 2) + tilemargin */
 }
 
     .st_two-v .st_scroll {
-        height: 520px; /* (tilebasewidth + tilemargin) * 2 */
+        height: 510px; /* (tilebasewidth * 2) + tilemargin */
         overflow: auto;
     }
 
