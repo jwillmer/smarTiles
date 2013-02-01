@@ -371,21 +371,21 @@
 }
 
 .st_graybg {
-    background-color: LightGray !important;
+    background-color: LightGray ;
 }
 
 .st_bgBlue {
-    background-color: lightBlue !important;
+    background-color: lightBlue ;
 }
 
 .st_bgRed {
-    background-color: red !important;
+    background-color: red ;
 }
 
 .st_bgYellow {
-    background-color: yellow !important;
+    background-color: yellow ;
 }
 
 .st_bgGreen {
-    background-color: lightgreen !important;
+    background-color: lightgreen ;
 }

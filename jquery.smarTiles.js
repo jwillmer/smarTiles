@@ -31,12 +31,92 @@
 ;(function($){
     $.fn.extend({
         smarTiles: function(options) {
-            this.defaultOptions = {};
+        	
+        	this.defaultColorSchemes = {
+        		blue : { 
+            		backgroundContent: '#3F9AC9',
+        			backgroundTitle: '#182B45',
+            		textContent: 'black',
+            		textTitle: 'white'
+        		},
+        		yellow : { 
+            		backgroundContent: '#E3B949',
+        			backgroundTitle: '#606061',
+            		textContent: 'black',
+            		textTitle: 'white'
+        		},
+        		red : { 
+            		backgroundContent: '#AF0837',
+        			backgroundTitle: '#6B0F24',
+            		textContent: 'black',
+            		textTitle: 'white'
+        		},
+        		green : { 
+            		backgroundContent: '#BECD1A',
+        			backgroundTitle: '#193725',
+            		textContent: 'black',
+            		textTitle: 'white'
+        		}
+        	};
+        	
+            this.defaultOptions = {
+            	title : '',
+            	content : '',
+            	colorScheme : 'blue',
+            	colors : {
+            		backgroundContent: '',
+            		backgroundTitle: '',
+            		textContent: '',
+            		textTitle: ''
+            	}
+            };
 
             var settings = $.extend({}, this.defaultOptions, options);
+            if(settings.colorScheme != '') {
+            	if(this.defaultColorSchemes[settings.colorScheme]) {
+            		var scheme = this.defaultColorSchemes[settings.colorScheme];
+	            	for(var i in scheme) {
+	            		if(typeof settings.colors[i] != 'undefined' && settings.colors[i] == '') {
+	            			settings.colors[i] = scheme[i];
+	            		}
+	            	}
+	            }
+	        }
 
             return this.each(function() {
                 var $this = $(this);
+                var thisSettings = $.extend({},settings);
+                
+                if(thisSettings.title == '') {
+                	thisSettings.title = $this.attr('title');
+                }
+                if(thisSettings.content == '') {
+                	thisSettings.content = $this.html();
+                }
+                
+                
+                $this.addClass('st_tile st_one st_bgRed');
+                $this.css('background-color', thisSettings.colors.backgroundContent);
+                $this.click(function() { alert('Not implemented!'); });
+                
+                $divContent = $('<div/>');
+                $divContent.attr('class','st_tileContent');
+                $divContent.html('<ul><li>' + thisSettings.content + '</li></ul>')
+                
+                $divTitleBg = $('<div/>');
+                $divTitleBg.attr('class','st_textBg');
+                $divTitleBg.css('background-color', thisSettings.colors.backgroundTitle);
+                $divTitleBg.html('<div class="icon icon-cloud"></div>' + thisSettings.title);
+                
+                $divTitleFg = $('<div/>');
+                $divTitleFg.attr('class','st_textFg');
+                $divTitleFg.css('background-color', thisSettings.colors.backgroundTitle);
+                $divTitleFg.html('<div class="icon icon-cloud"></div>' + thisSettings.title);
+                
+                $this.html('');
+                $this.append($divContent);
+                $this.append($divTitleBg);
+                $this.append($divTitleFg);
             });
         }
     });
