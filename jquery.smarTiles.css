@@ -16,6 +16,7 @@
     opacity: .75;
     -ms-filter: "progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=75)";
     filter: progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=75);
+	overflow: hidden;
 }
 
     .st_tile img {
@@ -26,7 +27,7 @@
         opacity: 1;
         -ms-filter: "progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=10)";
         filter: progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=100);
-        cursor: pointer;
+       /* cursor: pointer; */
     }
 
     .st_tile h1,

@@ -68,7 +68,8 @@
             		backgroundTitle: '',
             		textContent: '',
             		textTitle: ''
-            	}
+            	},
+				backgroundImage : ''
             };
 
             var settings = $.extend({}, this.defaultOptions, options);
@@ -93,16 +94,25 @@
                 if(thisSettings.content == '') {
                 	thisSettings.content = $this.html();
                 }
-                
-                
+
                 $this.addClass('st_tile st_one st_bgRed');
                 $this.css('background-color', thisSettings.colors.backgroundContent);
-                $this.click(function() { alert('Not implemented!'); });
-                
+				
+				if(typeof $this.attr('onclick') != 'undefined') {
+					$this.css('cursor', 'pointer');
+				}
+
                 $divContent = $('<div/>');
                 $divContent.attr('class','st_tileContent');
-                $divContent.html('<ul><li>' + thisSettings.content + '</li></ul>')
-                
+				$divContent.css('color', thisSettings.colors.textContent);
+
+				// (background)image beats content, not the perfect solution..
+				if(thisSettings.backgroundImage) {
+					$divContent.html('<img src="' + thisSettings.backgroundImage + '" />');
+				} else {
+					$divContent.html('<ul><li>' + thisSettings.content + '</li></ul>')
+                }
+				
                 $divTitleBg = $('<div/>');
                 $divTitleBg.attr('class','st_textBg');
                 $divTitleBg.css('background-color', thisSettings.colors.backgroundTitle);
@@ -110,7 +120,7 @@
                 
                 $divTitleFg = $('<div/>');
                 $divTitleFg.attr('class','st_textFg');
-                $divTitleFg.css('background-color', thisSettings.colors.backgroundTitle);
+                $divTitleFg.css('color', thisSettings.colors.textTitle);
                 $divTitleFg.html('<div class="icon icon-cloud"></div>' + thisSettings.title);
                 
                 $this.html('');
