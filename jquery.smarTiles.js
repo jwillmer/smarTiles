@@ -70,6 +70,9 @@
             		textTitle: ''
             	},
 				backgroundImage : ''
+				// new var for title icon
+				// create 10 base icons and let the user insert a sprite to extend the icon collection
+				// add a plugin constructor for this purpose?
             };
 
             var settings = $.extend({}, this.defaultOptions, options);
@@ -88,45 +91,51 @@
                 var $this = $(this);
                 var thisSettings = $.extend({},settings);
                 
+				// modify title
                 if(thisSettings.title == '') {
                 	thisSettings.title = $this.attr('title');
                 }
+				
+				// modify content
+				// ToDo: bg-image override content, find better solution!
                 if(thisSettings.content == '') {
                 	thisSettings.content = $this.html();
                 }
-
-                $this.addClass('st_tile st_one st_bgRed');
-                $this.css('background-color', thisSettings.colors.backgroundContent);
-				
-				if(typeof $this.attr('onclick') != 'undefined') {
-					$this.css('cursor', 'pointer');
-				}
-
-                $divContent = $('<div/>');
-                $divContent.attr('class','st_tileContent');
-				$divContent.css('color', thisSettings.colors.textContent);
-
-				// (background)image beats content, not the perfect solution..
+				var contentHtml = '<ul><li>' + thisSettings.content + '</li></ul>'
 				if(thisSettings.backgroundImage) {
-					$divContent.html('<img src="' + thisSettings.backgroundImage + '" />');
-				} else {
-					$divContent.html('<ul><li>' + thisSettings.content + '</li></ul>')
-                }
+					contentHtml = '<img src="' + thisSettings.backgroundImage + '" />';
+				}
 				
-                $divTitleBg = $('<div/>');
-                $divTitleBg.attr('class','st_textBg');
-                $divTitleBg.css('background-color', thisSettings.colors.backgroundTitle);
-                $divTitleBg.html('<div class="icon icon-cloud"></div>' + thisSettings.title);
+				// modify cursor
+				var cursor = 'default';
+				if(typeof $this.attr('onclick') != 'undefined') {
+					cursor = 'pointer';
+				}
+				
+				// create container	 
+                $divContent = $('<div/>')
+							    .attr('class','st_tileContent')
+							    .css('color', thisSettings.colors.textContent)
+								.html(contentHtml);
+				
+                $divTitleBg = $('<div/>')
+								.attr('class','st_textBg')
+								.css('background-color', thisSettings.colors.backgroundTitle)
+								.html('<div class="icon icon-cloud"></div>' + thisSettings.title);
                 
-                $divTitleFg = $('<div/>');
-                $divTitleFg.attr('class','st_textFg');
-                $divTitleFg.css('color', thisSettings.colors.textTitle);
-                $divTitleFg.html('<div class="icon icon-cloud"></div>' + thisSettings.title);
+                $divTitleFg = $('<div/>')
+								.attr('class','st_textFg')
+								.css('color', thisSettings.colors.textTitle)
+								.html('<div class="icon icon-cloud"></div>' + thisSettings.title);
                 
-                $this.html('');
-                $this.append($divContent);
-                $this.append($divTitleBg);
-                $this.append($divTitleFg);
+				// create tile
+                $this.addClass('st_tile st_one st_bgRed')
+					 .css('background-color', thisSettings.colors.backgroundContent)
+					 .css('cursor', cursor)
+					 .html('')
+					 .append($divContent)
+					 .append($divTitleBg)
+					 .append($divTitleFg);
             });
         }
     });
