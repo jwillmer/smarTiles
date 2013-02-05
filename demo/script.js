@@ -9,13 +9,12 @@ $(document).ready(function() {
     		backgroundTitle: 'darkgreen',
     		textContent: 'black',
     		textTitle: 'white'
-    	},
-		backgroundImage : '../test.png'
+    	}
 	});
 	
 	$('#tile3').smarTiles({colorScheme : 'red'});
-	$('#tile4').smarTiles({colorScheme : 'green'});
-	$('#tile5').smarTiles({colorScheme : 'yellow'});
+	$('#tile4').smarTiles({colorScheme : 'green', content: '../test.png'});
+	$('#tile5').smarTiles({colorScheme : 'yellow', toolTip: 'Hello World!'});
 	
 	$('.test').smarTiles();
 	

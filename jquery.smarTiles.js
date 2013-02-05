@@ -63,16 +63,20 @@
                 title: '',
                 content: '',
                 colorScheme: 'blue',
+				toolTip: '',
                 colors: {
                     backgroundContent: '',
                     backgroundTitle: '',
                     textContent: '',
                     textTitle: ''
-                },
-                backgroundImage: ''
-                // new var for title icon
-                // create 10 base icons and let the user insert a sprite to extend the icon collection
-                // add a plugin constructor for this purpose?
+                }
+				// width:
+				// height:
+				// isContentScrollable: 
+				
+                // titleIcon: 
+                // 	create 10 base icons and let the user insert a sprite to extend the icon collection
+                // 	add a plugin constructor for this purpose?
             };
 
             var settings = $.extend({}, this.defaultOptions, options);
@@ -91,20 +95,34 @@
                 var $this = $(this);
                 var thisSettings = $.extend({}, settings);
 
+				//var width = 250;
+				//var height = 250;
+				//$('<style>').text('.st_tile .st_tileContent img { width: ' + width + 'px; height: ' + height + 'px; }')
+				//			.appendTo('head');
+							
+				//$('<style>').text('.st_one { width: ' + width + 'px; height: ' + height + 'px; }')
+				//			.appendTo('head');
+
                 // modify title
                 if (thisSettings.title == '') {
                     thisSettings.title = $this.attr('title');
                 }
-
-                // modify content
-                // ToDo: bg-image override content, find better solution!
+		
+				if(thisSettings.toolTip == '') {
+					$this.removeAttr('title');
+				} else {
+					$this.attr('title', thisSettings.toolTip)
+				}
+		
+				// modify content
                 if (thisSettings.content == '') {
                     thisSettings.content = $this.html();
                 }
-                var contentHtml = '<ul><li>' + thisSettings.content + '</li></ul>'
-                if (thisSettings.backgroundImage) {
-                    contentHtml = '<img src="' + thisSettings.backgroundImage + '" />';
-                }
+				if (/(jpg|gif|png|JPG|GIF|PNG|JPEG|jpeg)$/.test(thisSettings.content)){
+					thisSettings.content = '<img src="' + thisSettings.content + '" />';
+				} else {
+					thisSettings.content = '<ul><li>' + thisSettings.content + '</li></ul>'
+				}
 
                 // modify cursor
                 var cursor = 'default';
@@ -112,31 +130,15 @@
                     cursor = 'pointer';
                 }
 
-                // create container	 
-                //$divContent = $('<div/>')
-				//			    .attr('class', 'st_tileContent')
-				//			    .css('color', thisSettings.colors.textContent)
-				//				.html(contentHtml);
-
-                //$divTitleBg = $('<div/>')
-				//				.attr('class', 'st_textBg')
-				//				.css('background-color', thisSettings.colors.backgroundTitle)
-				//				.html('<div class="icon icon-cloud"></div>' + thisSettings.title);
-
-                //$divTitleFg = $('<div/>')
-				//				.attr('class', 'st_textFg')
-				//				.css('color', thisSettings.colors.textTitle)
-				//				.html('<div class="icon icon-cloud"></div>' + thisSettings.title);
-
                 // create tile
-                $this.addClass('st_tile st_one st_bgRed')
+                $this.addClass('st_tile st_one')
 					 .css('background-color', thisSettings.colors.backgroundContent)
 					 .css('cursor', cursor)
 					 .html('')
                      .append($("<div>")
                                 .attr('class', 'st_tileContent')
 							    .css('color', thisSettings.colors.textContent)
-								.html(contentHtml))
+								.html(thisSettings.content))
                     .append($('<div/>')
 								.attr('class', 'st_textBg')
 								.css('background-color', thisSettings.colors.backgroundTitle)
@@ -145,10 +147,6 @@
 								.attr('class', 'st_textFg')
 								.css('color', thisSettings.colors.textTitle)
 								.html('<div class="icon icon-cloud"></div>' + thisSettings.title));
-
-					// .append($divContent)
-					// .append($divTitleBg)
-					// .append($divTitleFg);
             });
         }
     });

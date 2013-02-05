@@ -1,0 +1,396 @@
+
+
+
+
+.st_tiles {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-family: "Segoe UI", "Segoe WP", "Helvetica Neue", 'RobotoRegular', sans-serif;
+    font-size: 14px; /* baseFontSize */
+}
+
+.st_tile {
+    float: left;
+    margin-right: 10px; /* tilemargin */
+    margin-top: 10px; /* tilemargin */
+    text-align: left;
+    padding: 0px;
+    position: relative;
+    opacity: .75;
+    -ms-filter: "progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=75)";
+    filter: progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=75);
+	overflow: hidden;
+}
+
+    .st_tile img {
+        border: 0;
+    }
+
+    .st_tile:hover {
+        opacity: 1;
+        -ms-filter: "progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=10)";
+        filter: progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=100);
+       /* cursor: pointer; */
+    }
+
+    .st_tile h1,
+    .st_tile h2,
+    .st_tile h3,
+    .st_tile h4,
+    .st_tile h5,
+    .st_tile h6 {
+        font-family: "Segoe UI Light", "Helvetica Neue", 'RobotoLight', "Segoe UI", "Segoe WP", sans-serif; /* headingfonts */
+        color: white;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-weight: 100;
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+
+    .st_tile h4,
+    .st_tile h5,
+    .st_tile h6 {
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+
+    .st_tile h1 {
+        font-size: 56px; /* baseFontSize * 4 */
+    }
+
+    .st_tile h2 {
+        font-size: 42px; /* baseFontSize * 3 */
+        margin-top: 10px; /* tilemargin */
+        margin-left: 0px;
+    }
+
+    .st_tile h3 {
+        font-size: 28px; /* baseFontSize * 2 */
+    }
+
+    .st_tile .st_tileContentPlain {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .st_tile .st_tileContent {
+        width: 100%;
+        overflow: hidden;
+    }
+
+        .st_tile .st_tileContent img {
+            float: left;
+            width: 250px; /* tilebasewidth */
+            height: 250px; /* tilebasewidth */
+        }
+
+        .st_tile .st_tileContent ul {
+            margin-left: 0;
+            margin-top: 0;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            list-style-type: none;
+        }
+
+        .st_tile .st_tileContent .st_tileContent60percent,
+        .st_tile .st_tileContent .st_tileContent30percent {
+            padding: 10px;
+            float: left;
+        }
+
+        .st_tile .st_tileContent .st_tileContent60percent {
+            width: 60%;
+        }
+
+        .st_tile .st_tileContent .st_tileContent30percent {
+            width: 30%;
+        }
+
+        .st_tile .st_tileContent .st_active-li {
+            margin: 4px;
+            margin-right: 5px;
+        }
+
+            .st_tile .st_tileContent .st_active-li:hover {
+                cursor: pointer;
+            }
+
+            .st_tile .st_tileContent .st_active-li .st_tile-function-info,
+            .st_tile .st_tileContent .st_active-li .st_tile-function-refresh,
+            .st_tile .st_tileContent .st_active-li .st_tile-function-home,
+            .st_tile .st_tileContent .st_active-li .st_tile-function-removeUser,
+            .st_tile .st_tileContent .st_active-li .st_tile-function-add {
+                background-image: url(ICON_SPRITES);
+                background-repeat: no-repeat;
+                width: 23px;
+                height: 20px;
+                cursor: pointer;
+                float: left;
+                margin-right: 5px;
+            }
+
+            .st_tile .st_tileContent .st_active-li .st_tile-function-removeUser {
+                background-position: -32px -899px;
+            }
+
+            .st_tile .st_tileContent .st_active-li .st_tile-function-refresh {
+                background-position: -32px -954px;
+            }
+
+            .st_tile .st_tileContent .st_active-li .st_tile-function-info {
+                background-position: -32px -535px;
+            }
+
+            .st_tile .st_tileContent .st_active-li .st_tile-function-home {
+                background-position: -32px -199px;
+            }
+
+            .st_tile .st_tileContent .st_active-li .st_tile-function-add {
+                background-position: -32px -999px;
+            }
+
+            .st_tile .st_tileContent .st_active-li .st_tile-function-img {
+                cursor: pointer;
+                float: left;
+                margin-right: 5px;
+                padding: 2px;
+                width: 19px;
+                height: 16px;
+            }
+
+    .st_tile #loadingAnimation img {
+        margin: 30px;
+        width: 250px; /* tilebasewidth */
+        height: 250px; /* tilebasewidth */
+    }
+
+    .st_tile #updateContentTime {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        text-align: center;
+        padding-top: 105px;
+        color: blue;
+        font-size: 16px; /* h3 font size*/
+    }
+
+    .st_tile .st_textBg,
+    .st_tile .st_textFg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: left;
+        font-size: 28px; /* h3 font size*/
+        padding: 3px 8px;
+    }
+
+    .st_tile .st_textBg {
+        opacity: .5;
+        -ms-filter: "progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=50)";
+        filter: progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=50);
+        background-color: darkblue;
+    }
+
+    .st_tile .st_textFg {
+        color: white;
+    }
+
+    .st_tile .st_tile-icon-info,
+    .st_tile .st_tile-icon-refresh,
+    .st_tile .st_tile-icon-home,
+    .st_tile .st_tile-icon-removeUser,
+    .st_tile .st_tile-icon-settings,
+    .st_tile .st_tile-icon-question {
+        background-image: url(ICON_SPRITES);
+        background-repeat: no-repeat;
+        float: left;
+        width: 23px;
+        height: 20px;
+        margin-top: 12px;
+        margin-right: 5px;
+    }
+
+    .st_tile .st_tile-icon-refresh {
+        background-position: -32px -954px;
+    }
+
+    .st_tile .st_tile-icon-info {
+        background-position: -32px -535px;
+    }
+
+    .st_tile .st_tile-icon-home {
+        background-position: -32px -199px;
+    }
+
+    .st_tile .st_tile-icon-removeUser {
+        background-position: -32px -899px;
+    }
+
+    .st_tile .st_tile-icon-settings {
+        background-position: -32px -844px;
+    }
+
+    .st_tile .st_tile-icon-question {
+        background-position: -32px -506px;
+    }
+
+    .st_tile .st_tile-icon-img {
+        float: left;
+        padding: 2px;
+        width: 19px;
+        height: 16px;
+        margin-top: 12px;
+        margin-right: 5px;
+    }
+
+.st_bgGreen .st_textBg {
+    background-color: darkgreen;
+}
+
+.st_bgGreen .st_active-li:hover {
+    background-color: darkgreen;
+    color: white;
+}
+
+.st_bgYellow .st_textBg {
+    background-color: gray;
+}
+
+.st_bgYellow .st_active-li:hover {
+    background-color: gray;
+    color: white;
+}
+
+.st_bgRed .st_textBg {
+    background-color: darkred;
+}
+
+.st_bgRed .st_active-li:hover {
+    background-color: darkred;
+    color: white;
+}
+
+.st_bgBlue .st_textBg {
+    background-color: royalblue;
+}
+
+.st_bgBlue .st_active-li:hover {
+    background-color: royalblue;
+    color: white;
+}
+
+.st_no-pointer:hover {
+    cursor: default;
+}
+
+.st_not-active:hover {
+    cursor: default;
+    opacity: .75;
+    -ms-filter: "progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=75)";
+    filter: progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=75);
+}
+
+.st_tilerow {
+    float: left;
+}
+
+.st_one {
+    width: 250px; /* tilebasewidth */
+    height: 250px; /* tilebasewidth */
+}
+
+    .st_one .st_scroll {
+        height: 250px; /* tilebasewidth */
+        overflow: auto;
+    }
+
+.st_two-h {
+    width: 510px; /* tilebasewidth * 2 + tilemargin */
+    height: 250px; /* tilebasewidth */
+}
+
+    .st_two-h .st_scroll {
+        height: 250px; /* tilebasewidth */
+        overflow: auto;
+    }
+
+.st_three-h {
+    width: 770px; /* tilebasewidth * 3 + tilemargin * 2 */
+    height: 250px; /* tilebasewidth */
+}
+
+    .st_three-h .st_scroll {
+        height: 250px; /* tilebasewidth */
+        overflow: auto;
+    }
+
+.st_two-v {
+    width: 250px; /* tilebasewidth */
+    height: 510px; /* (tilebasewidth * 2) + tilemargin */
+}
+
+    .st_two-v .st_scroll {
+        height: 510px; /* (tilebasewidth * 2) + tilemargin */
+        overflow: auto;
+    }
+
+.st_two {
+    width: 510px; /* tilebasewidth * 2 + tilemargin */
+    height: 520px; /* (tilebasewidth + tilemargin) * 2 */
+}
+
+    .st_two .st_scroll {
+        height: 520px; /* (tilebasewidth + tilemargin) * 2 */
+        overflow: auto;
+    }
+
+.st_firstcol, .st_secondcol, .st_thirdcol, .st_fourthcol, .st_fifthcol {
+    position: absolute;
+}
+
+.st_firstcol {
+}
+
+.st_secondcol {
+    margin-left: 270px; /* (tilepadding*2) + tilebasewidth + tilemargin */
+}
+
+.st_thirdcol {
+    margin-left: 540px; /* ((tilepadding*2) + tilebasewidth + tilemargin) *2 */
+}
+
+.st_fourthcol {
+    margin-left: 810px; /* ((tilepadding*2) + tilebasewidth + tilemargin) *3 */
+}
+
+.st_fifthcol {
+    margin-left: 1080px; /* ((tilepadding*2) + tilebasewidth + tilemargin) *4 */
+}
+
+.st_graybg {
+    background-color: LightGray ;
+}
+
+.st_bgBlue {
+    background-color: lightBlue ;
+}
+
+.st_bgRed {
+    background-color: red ;
+}
+
+.st_bgYellow {
+    background-color: yellow ;
+}
+
+.st_bgGreen {
+    background-color: lightgreen ;
+}
