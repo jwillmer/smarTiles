@@ -1,7 +1,5 @@
 .st_tile {
     float: left;
-    margin-right: 10px; /* tilemargin */
-    margin-top: 10px; /* tilemargin */
     text-align: left;
     padding: 0px;
     position: relative;
@@ -9,63 +7,10 @@
     -ms-filter: "progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=75)";
     filter: progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=75);
 	overflow: hidden;
-	/* background-color: set via smarTiles */
-	/* cursor: set via smarTiles */
 }
-
-    .st_tile img {
-        border: 0;
-    }
 
     .st_tile:hover {
         opacity: 1;
         -ms-filter: "progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=10)";
         filter: progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=100);
-    }
-	
-.st_one {
-    width: 250px; /* tilebasewidth */
-    height: 250px; /* tilebasewidth */
-}
-	
-    .st_tile .st_tileContent {
-        width: 100%;
-        overflow: hidden;
-		/* color: set via smarTiles */
-    }
-
-        .st_tile .st_tileContent img {
-            width: 250px; /* tilebasewidth */
-            height: 250px; /* tilebasewidth */
-        }
-
-        .st_tile .st_tileContent ul {
-            margin-left: 0;
-            margin-top: 0;
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-top: 10px;
-            list-style-type: none;
-        }
-		
-    .st_tile .st_textBg,
-    .st_tile .st_textFg {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: left;
-        font-size: 28px; /* h3 font size */
-        padding: 3px 8px;
-    }
-
-    .st_tile .st_textBg {
-        opacity: .5;
-        -ms-filter: "progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=50)";
-        filter: progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=50);
-        /* background-color: set via smarTiles */
-    }
-
-    .st_tile .st_textFg {
-        /* color: set via smarTiles */
     }

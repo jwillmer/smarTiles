@@ -5,7 +5,6 @@
     <title>smarTiles</title>
     <meta name="description" content="smarTiles Demo">
     <link rel="stylesheet" href="../jquery.smarTiles.css?v=1.0">
-	<link rel="stylesheet" href="../mfglabs_iconset.css">
     <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -30,13 +29,24 @@
 						sed diam voluptua. At vero eos et 
                         accusam et justo duo dolores et ea rebum. </div>
 						
-    <div id="tile4" title="Testkachel 4">Testeintrag 4</div>
+    <div id="tile4" data-label="Testkachel 4 mit sehr langem Label-Text">Testeintrag 4</div>
 	
-    <div id="tile5" title="Testkachel 5">Testeintrag 5</div>
+    <div id="tile5" data-label="Testkachel 5">
+        <div><h1>Hallo</h1><p>Testeintrag Nummer 1</p></div>
+        <div><h1>du</h1><p>Testeintrag Nummer 2</p></div>
+        <div><h1>Nase</h1><p>Testeintrag Nummer 3</p></div>
+    </div>
  
-    <div class="test" title="ClassTest A">Testclass A</div>
-    <div class="test" title="ClassTest B">Testclass B</div>
-    <div class="test" title="ClassTest C">Testclass C</div>
+    <div class="test" data-label="ClassTest A">Testclass A</div>
+    <div class="test" data-label="ClassTest B">Testclass B</div>
+    <div class="test" data-label="ClassTest C">Testclass C</div>
+    <div id="tile6"></div>
+    <div id="tile7" data-label="ClassTest C" data-sublabel="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+                        sed diam nonumy eirmod tempor invidunt ut labore et dolore 
+                        magna aliquyam erat, sed">Testclass C</div>
+    <div id="tile8" data-sublabel="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+                        sed diam nonumy eirmod tempor invidunt ut labore et dolore 
+                        magna aliquyam erat, sed">Testclass C</div>
     
 </body>
 </html>
