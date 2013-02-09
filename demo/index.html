@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>smarTiles</title>
     <meta name="description" content="smarTiles Demo">
-    <link rel="stylesheet" href="../jquery.smarTiles.css?v=1.0">
     <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -16,7 +15,7 @@
 </head>
 <body>
     
-    <div id="tile1" title="Testkachel 1" onclick="alert('Not implemented!');">Testeintrag 1</div>
+    <div id="tile1" title="Testkachel 1" onclick="alert('Not implemented!');">OnClick!</div>
 	
     <div id="tile2"></div>
 	
@@ -32,21 +31,39 @@
     <div id="tile4" data-label="Testkachel 4 mit sehr langem Label-Text">Testeintrag 4</div>
 	
     <div id="tile5" data-label="Testkachel 5">
-        <div><h1>Hallo</h1><p>Testeintrag Nummer 1</p></div>
-        <div><h1>du</h1><p>Testeintrag Nummer 2</p></div>
-        <div><h1>Nase</h1><p>Testeintrag Nummer 3</p></div>
+        <div>
+		<h1>Lorem ipsum</h1>
+		<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur </p>
+		</div>
+        
+		<div>
+		<h1>At vero eos</h1>
+		<p>At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+		</div>
+		
+		<div>http://pixabay.com/static/uploads/photo/2012/03/01/01/38/rust-20291_640.jpg</div>
     </div>
  
-    <div class="test" data-label="ClassTest A">Testclass A</div>
-    <div class="test" data-label="ClassTest B">Testclass B</div>
-    <div class="test" data-label="ClassTest C">Testclass C</div>
+    <div class="test" data-label="ClassTest A">Testclass A, Tile 1 </br> <b>ToDo:</b> Title=ClassTest A<br/> <h1>BUG</h1></div>
+    <div class="test" data-label="ClassTest B">Testclass A, Tile 2 </br> <b>ToDo:</b> Title=ClassTest B<br/> <h1>BUG</h1></div>
+    <div class="test" data-label="ClassTest C">Testclass A, Tile 3 </br> <b>ToDo:</b> Title=ClassTest C<br/> <h1>BUG</h1></div>
     <div id="tile6"></div>
-    <div id="tile7" data-label="ClassTest C" data-sublabel="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+    <div id="tile7" data-label="Info" data-sublabel="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
                         sed diam nonumy eirmod tempor invidunt ut labore et dolore 
-                        magna aliquyam erat, sed">Testclass C</div>
+                        magna aliquyam erat, sed">At vero eos et accusam et justo duo dolores et ea rebum.</div>
     <div id="tile8" data-sublabel="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
                         sed diam nonumy eirmod tempor invidunt ut labore et dolore 
-                        magna aliquyam erat, sed">Testclass C</div>
+                        magna aliquyam erat, sed">At vero eos et accusam et justo duo dolores et ea rebum.</div>
+						
+	<div id="tile9"></div>
+	<div id="tile10"></div>
+	<div id="tile11"></div>
+	<div id="tile12" data-label="Color-Scheme">Black & White</div>
+	<div id="tile12"></div>
+	<div id="tile13"></div>
+	<div id="tile14"></div>
+	<div id="tile15"></div>
+	<div id="tile16"></div>
     
 </body>
 </html>

@@ -32,6 +32,7 @@
     $.fn.extend({
         smarTiles: function (options) {
 
+			// color schemes
             this.defaultColorSchemes = {
                 blue: {
                     backgroundContent: '#3F9AC9',
@@ -56,46 +57,50 @@
                     backgroundTitle: '#193725',
                     textContent: 'black',
                     textLabel: 'white'
+                },
+                white: {
+                    backgroundContent: '#FFFFF',
+                    backgroundTitle: '#193725',
+                    textContent: 'black',
+                    textLabel: 'white'
                 }
             };
 
+			// default options
             this.defaultOptions = {
-                label: {
-                    text: '',
-                    sub: '',
-                    animation: 'transparent',
-                    icon: 'jens',
-                    iconUrl: '',
-                    iconPosition: '0px 0px'
+                label: { // bottom (label) bar settings
+                    text: '', // title/label
+                    sub: '', // subtitle
+                    animation: 'transparent', // animation effect
+                    icon: 'info', // displayed title icon
+                    iconUrl: '', // icon (sprite) url
+                    iconPosition: '0px 0px' // icon position
                 },
-                content: '',
+                content: '', // tile content
                 format: {
-                    resizeImages: true,
-                    switchContent: false
-
+                    resizeImages: true, // auto resize images to fit the tile
+                    switchContent: false, // switch between multiple tile content
+					//switchContentRandom: false, // if switchContent is true switch random between multiple tile content
+					hoverEffect: true // set transparency on tiles that lost focus (on mouseleave)
                 },
-				toolTip: '',
-				colorScheme: 'blue',
-				colors: {
-                    backgroundContent: '',
-                    backgroundTitle: '',
-                    textContent: '',
-                    textLabel: ''
+				toolTip: '', // tool tip of the tile
+				colorScheme: 'blue', // color schema 
+				colors: { 
+                    backgroundContent: '', // color of the tile background 
+                    backgroundTitle: '', // color of the label/title background
+                    textContent: '', // font color of the tile content
+                    textLabel: '' // font color of the label/title & subtitle
                 },
-				baseWidth: 250,
-				baseHeight: 250,
-				basePadding: 10,
-				baseMargin: 5,
-				xSize: 1,
-				ySize: 1,
-				size: 0
-				// isContentScrollable: 
-				
-                // titleIcon: 
-                // 	create 10 base icons and let the user insert a sprite to extend the icon collection
-                // 	add a plugin constructor for this purpose?
+				baseWidth: 250, // basic tile width
+				baseHeight: 250, // basic tile height
+				basePadding: 10, // basic tile padding
+				baseMargin: 5, // basic tile margin
+				xSize: 1, // basic x-size multiplier
+				ySize: 1, // basic y-size multiplier
+				size: 0 // basic x-/y-size multiplier
             };
 
+			// config color scheme
             var settings = $.extend(true, {}, this.defaultOptions, options);
             if (settings.colorScheme != '') {
                 if (this.defaultColorSchemes[settings.colorScheme]) {
@@ -122,35 +127,55 @@
 			    settings.computedLabelHeight = 30;
 			}
 
-            // config label icon
+            // config basic label icon set
 			if (settings.label.icon != '' && settings.label.iconUrl == '') {
-			    settings.label.iconUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAIiUlEQVRYhZWWWYzfVRXHP+fe+1v+y6ztTLeRVqlYEWgpiqSojawqGKMSfXB5MFEUfZCQaGJM4EkfNDE+GGOUGI0LiigmJkhA48qWWqgVaShKF6Yz0/n9Z/778vv97j0+tAh2keEk5/Wez/me5R754h0f4dVYyCNES1LnaDZXovmF+WvVm3f3i3LaGNeLhONB4wdCiPbXxqpMj4+d961v//ge3KuKftpEBDG8e6yafnm6WttzYmGJfqePV0UxmDi9sz42c6cR89VXeutVA4gxNfLBNyqOT174+q1MXXkZeKXfbNNqr3JyaYWl1Xb0r8WTX7FhbFZEblfV8wOIypqDG2PifND6mRu2btp96VvZeflOpmbXEdVqYAXtj/CdNr1ui4MHDnL/7/Z9voAjwblvch4Il9j62jIXIRSDL7VXT970jt07ecuVVzA5Ow1pSjAGUaCa4MwYE4njrW/ZDQg/ffjxr0m0/q8g+84J4FxtbQDGznV7q5/bMjvDJZdeTFqvoc6hcRWsQcsSAHUBbIEYx7atF3Dhxqejg8dHn0rS2j44WwXn7Zrio+p3rptat27XRZuZnJklTlMkjsEZNK6ADCEACaABGXRJnOPSN17Mc8uHruuVJhHR0VkAwtp6wBhjorgK4qgkCWKFYasFgwJTU2x9AlEPiSIoZVyjlAYT0zNsnmtMHD6e142VswEKX64JQMT0ev0RozwgJqa50oFCEe2xuvgUtXqV9W/aRbDK4hNP8PzxYzgbs9gqCrX1xYnpUo05O1nXaffXBOBDeKEY5HkolmM7OsjYhmm2rk9YHFqG7YJL6obWiXk6jYyT7YJk4za6C0tkrd4zjXL6e2ltwZelPxvgitfMvGJwVSWNkur6NDFuKuGKSy+humGcQbNJrYiRyTqVSPHVBOur9Dsl62Y2cmhxnk3T1ZGvpPcdy6YH4JEzRHAfeNcVawKI4+pVNordP59+BusspFUqc+uoBoFRn5B3SRByVSaqXWY2TTMxuYcsW9k9fPLoHyXJr5JUG2cpUHHRKwKAosY2pT7GzPoZRoM+cXcEsUGrdag68AVFK8eOT5P3nqEIBfH4euorbZvkow2bovj0sjgDwGPQc8znmSYh/Nt5mNwyR9Fq4jtd7JiB8QkoCuiNKNs92ifmaS032DhsA9Bpd0mF45WKy84Vx0WVCbAGSk9ZejSE84mwT9U+5OJwTd+LVgQneHTYAA1QnSKN6th6lWqlQuj36LfbNFabiEsOFiY/Z5a2Y8fIGj2MS5ianCKuT2AkRrGIiV9yG6st/a/7je4PVjuj99Xr8aSdqEMMZSujyNqE1hCfNek0VgipQ0zJ80eW87zr7wCeDwFe7hfu2Yt74LH9PPjIU8S1hB0XzLH3sovYu+uN7Ni2heGoILxMkYLQHuLa1XrS7rU6TE6OQyS4xOBmx8GNEfWncd06oezS7Y0ohvmBIoTfnUdXXC1NsGopRTjw3FH+9sxhfvjgo3z42it5/9svZ7xaJS9KTn2pQlBNKrUkHbZ65CurJLaOkqDWg++C8djEEUphYX6Z/qi4BwvnW3d282tfh8GgVjDGUk0iRkXg8X8eZt/ThzA2olJJ6Oc53eGIUeErtXrt9rH1tfHm0hJGAxIUiSrYtIIYhwyGHDt6jEOHTzySB//ZIOo9gTP94qtvOMdBooqzBucSji4s8/Wf/oaZdXUInrwoefPWuY/fdduH59KpjUw5R/f4PK0so9Pp4o1j0G3TbLU5crxxLM/zW1wc8v9OEsKpbfzSNvq/F1EcWSyO7nAIPqczKD+mnaVvpdJDgxBt2MT02CTF8jJ2eYmTCwusZC3mTzZod3jIWrdQlIoRwVmDD8ogL/H6Ukes4SQTrBG8j69Pg//2lokU6wScAU4tomhzzOyGLcxs77HtxAs8uf/vPHt4+ZEoEiJn6Q5yjiw3eer5BsutPr1yRCDwhVcCeFEoH+Qztiy/qVajfyy2yUcFFVGCBpAIXIpakDilrkoSP0stTY+1Bn3+eugoB44ss9zuEbkKAgxCQSD8fwWCynhQ+07U3+5G+V7RksRZDp1o8qf9z3HjjktAT/39BIUiR8RS9ob0Om1+v//JXY8dXnp4ZTiiEteIrCGyFg2nSvJieuZ/UxYCskWD3ilF/nSZ9+8Pg+bewaBLWSqiijjHPb99grIfMM4BCmWO5AX0egyaqwxGOX859K+vNQb9P1Ti6Dprz3EInDbzothBZU8oyrtHw97BUTe7K+805gbdDu1el3xYoL4g1xLnLAePvMADj76AyBxi62ArKAE/HKBimL1gKxdt30pkda9K8RCmfFjhbWcMwCmAUuXqQVH8oei0/5J3s0+EQXdKyxFBAyoeq4ANFCEn+BKv4CLhO9/9Hs1WH5FJTLIJM7kds2EH9R1X8+b3foz33Hw9lchAgBBG1zirf0b0zjOvc2O1+L1jsBffl0CJ0QCiBAMiBjUw6OX0BjkhgHiPiGX+2LP88lf3v6x8ERLXMHEVlYgbb7iJPVftJPgRpQ84A2IGdwX8vYrELwphDBpHLsZah6hBrUONRRHEOiIXY53SHfTodHoUZYlHSSsp9973M7KV9ll1LYoRW7ddxG23fpqJiTHwOXk5gOBR6d6CL26nDBsBjHBqnGxkAY+KYk63hqhAZInjhEpksAS8L8Gfap/FxXnu/uFPzm4sI4Dlsl27ufG6t+NLT54X+FCClviyd6sv8o++1IQhgFoiE+GDJ4QcUSUIOCzOOVwcE8cxIhYNAVWlkqb84uc/4skDh/4HwLn49FA5PvTBW9iyeZai9HhfgDEQig0Shq8DMMGTBQ1ZwGdYmwVfZgGTqWhmjWQYMsRkzsRZ4UPm8ZnHZ4EyC2jmy1F29w++nwEvc5MBWVn6bPv2N2Tvu/ldmZWQlb7IIpVVI9IotOgC/AfKcGfx4spy0gAAAABJRU5ErkJggg==';
+			    var labelIconUrls = {
+				'info': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAImSURBVGhD7ZgxSyNBGIaTYGGZ7oQTtBC8QtDCQtDCH2BhoXCNYJFOf4KFhb2FhaXVcaWFVwgKChZRVHJWHtwdKmhloWAjKPGeN/uJIZAzuzth1jAPvLzfTmY27+7O7mySCwQCgUAg4JG8uTOq1WovNo2G0SjqQj/RaT6f30a/qLMJ4RfRw0sT+OwJW0Y6qOxAoCLh9hRSUO+gJcpp/DhqfYO2CtZvw/1DoA0LdotmrG0IldBvfdYI7Xu1wb4hyJQF0vSYRD3UW2p7D/ot2m78QYhzC7OKdeFlbbcCfXW/+Lsf+PJiLUnEBIG+Wh2HEdtdIgrmieDLJ6wUelSOR2XrNOwjNqkOAL6YK8g8pud/XAbNE5HqAFiU/lipeg1pEYvLX/NEpL0Cmjap4KBPrPQDN+6m7sQkMLZiu/EHOUYIojUgNoybst34hSx6v4kF4TdsuH/IowWspdVX0FfvR902PBsQqhfdRRGbQ58nNGTDsgXB1i1nU+izZd2dkPYx2siZ+f84Ms8enF1No/eeSJPW3Qnt+ElZwhZQsdbwxiP6VigUVqLNQGfQjik0humlTvpUV+s3cA+aZRr9wJ3g9AAIP4Cdo3t0bbrkhe2Gm/cav2T7EH/GndCu/4Xq1Ve/Tfg5tE/tBNdXYIxwZdWccZ1t6fVKXMn5fBfpieQE51eA4JrnQq8LOuv9tH3Grz7MI5Qr8fo/0QU6QN+R1odAIBAIBAIdRC73D0FqGJwRITyAAAAAAElFTkSuQmCC',
+				
+				'settings': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKWSURBVGhD7ZavbxRREMfvLidOVFRUVFQ0oeIEogJRgShJBQKBqEAgKk5UICorECQIxImKCuSJCkJOVlRUlASB4A+A5EgQR1LTpKIkFU1u+Xzn5ja715ZeyC5swnySyfx48/bN2903u7UgCIIgCIIg+H9IkmQB2R2NRvvuz2N/Qb9CWpZUZSh2jUInbOF3ZaBPPaX6UOx3Kz8DsSONYeoJzVvi34DFWsi6S9vD16DA18gnpEeegX0pcVf+Z+QK6fq08mGx+76+Cuh5+BqMDT3NwO+jmkgLe8+CDv6JTyserr/IAnpv7cChdecN4seWBNiPkU135a8g7zzvCtX0IYPYqcZgF8mNFQYXVvHqGCpCr8MaciBfYA+RJ8gOoldBkm6ClKfjzCTxUAp5di7Qb1DldCMuruJ092aG/L7P7WbnYu/ZRQF7x8MG/sCHioeLd3ydOyH3I2rO5+17LHto9cTSjoStp3qBvLXFyoB1dOguxkvaojoPan2K673PFvTCp2neMv4mWnnaWA5iQ89TV1uwSUWiYhC1wiNbEbAPfTiFWPqhwtYdVofRl3fFU5Qz8PFD5KVsZ9VTiscXyMHiz3w4B3E76FNsaQytJ9BDzhHbFPoYUYdall8KVsIULPrch3MQtzs8hW1gAn4hnabu+k68gEX0vXq93vHYh0aj8Uj2BGLrKPsQYX8l9z36B65yvyn+T6GYJnc4e4j7yAPMNnobOR+P2Ni2T6sO1KUv5UywAZ0Fa6OVgGI2KOqPPmSVgHrmKMh6OPoEpd5u//MCe4Do96KD6DdCr9pDn14NKEibUO+2Hy70jT9zuBtItYq/CYpsq3jBBm79nS6LmdvobVC3nsTS2Kv9pG2euR0EQRAEQRAEv6NW+wUlnjQ5hk8jlwAAAABJRU5ErkJggg==',
+				
+				'vcard': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHASURBVGhD7ZetTsNQFIBbMjFRMTGBRPAACAQSiUBM4EBMIHAoPA6BmCJIHmC8wx6AB0COBMHEEgRLcCvfuT1r2NLRdtsta3K+5Oz83b/Te9uugWEYhmEYhlFfQtW5xHF8q2YlhGFYaL4yBcRqVgIFFFpbqQJggvmcRPzAuruqC6+tELL66XQ6VNcb7jKBurnsqK4tGymAnTlF+sgA6XEB25raHmRbs44QsSvJ/YbYB2qlIpIRPDwwZNAlBXy5GRcg3tMmpdDu1dwDLHKfh0Wk7iIHqr2yVgEsfqRmFmPVXlm3gAm7nfleIPegZgo7dibHcIkcaTM/yLmUidRNIdwi3pe8gP2JXGh6DtLdpFUmx9rG4TpsEhl0SQFNpIVEyJ7GdkVcg5LQz6FuLisfIeZoUNAd+h23gzSwrzV3iQyRSv8A/gmLmdsB7EeJCWJLDFMKkdwgybhcqcepdvN7hDA74s8g/opqol/QEfrbJRT8QzdIAbSL3yPE+OfI20wIyX1wj26jZTdGC/kT5H9hIekO+ETmEdTNZa33wDZQ9oNmzAvqRkO+eJIf5tn8F5maleCjgK38qDcMwzAMwzBqSxD8AK1n46QLCKsDAAAAAElFTkSuQmCC',
+				
+				'date': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAInSURBVGhD7ZevTyNBFMfbBnGiAoGoIAGSS7BIBAIcfwYEe/ISkOcR9ydwCIImwSEwSP4ABAkVCMQJBMldAmn5fGff9vpjtt3tbimXvE/y8t585+3Mzu6b2bbmOI7jOI4zZzqdznfspzUnQu4ydtLtdrdMmh/cxBI384rv4jdNHosWa/lXJk1Nw3wZmvV6fUEB/ktQJrNoPlxXhtwL4IGtRiy9kR5ozaGcAbO0AdBbefJKwaAxfmCaMGUb20vCOBrL6l8ldG3t69DZh/Q8lC4h5nqzsAjTXBOl1AK4+ZVGo/GIv8TukG7xI2XVD/2r7JUz/CPNi0StVV8ywzDhCLz6P7gNS0mPx4ekNw7957je5qX9LekZxLonUjc/kaxBkf/iLjGVxS5Pd+wbEFxzj7vBvpIf/Rag57q3wgvA/QrCbGhx37sKZrYADUzYIuw/858xvYGl0PpHlq5x2io5fFpOylU5hpNJ88hXhhYgFDPx8LGn4zR2fGbp6TgP1hTK1TEcUH8eqvgSz5VpS+gIWw8dgKTj8DfaQaIkZOmC43efN3BMGMrLclVGhUqosj2ArMlHILeJ+/x7ICRFoM/3wDh8AfPmv9/EUy2AifX/t/cjDumU7ifCw0RJyNIFx+gO45wT6mGEXFwb8y9xHp6Yo91nz9jLkDZO15MW+i+RatESrAwmCFhzJjB84TdQeA98FHn3QO4FqF4t/BDY5GsWOo7jOI7jzIZa7R0v/zxux0qcsAAAAABJRU5ErkJggg==',
+				
+				'chart': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIMSURBVGhD7ZchTwNBEIV7DQKBQCKRFRUIJAKJQCAqkEhk8TgEAgEJAsFP4AcgEUhkBRISSCBBgmjSpOV7e3Pb60HTnqC7JPslk5l9u82+aXevbSORSCQSiURizHA43CRObDiTpuWgjEajFUwfEg9Zlj0gLeczkWPv9hXxSRNlWrYkPjDn3+3c6yTod7Y0TvC4hMmb3O5PmNu3pfGCTzVxn1seg/ZBiv/8Y7RDDHLbY9DObEm8VM1T90rjeC+vwOhOxbyOkS51l4j+8m5h0j8uqR9Jazat+XUr4wNzU82TV9yikMgEpm7JWyZ50NsV808kZ566S33gFoYCAzLvHolm1DdB3UJ705yw2l1U6uIyh2uAzb35AsauCWKqebKOVHGZwzTAxlO/UdVExbzGbXvdhsb5jGPxDbDpD/OMTwlvusDM+mPFuJfPeBbbABv+Zr5rc9Vj482Ti4urS1xmcQ2w2a/mSboL7k8ItWuCGBC70sjn6M4odZgG2Giaeel6hGrcsbUtYk81msyLsA2wcdX8semXJkl7Ia26FwDjwrwI/gl4ZMzkCd3Yls6aMxsX/EkDtf8Ts+FFs9k8Is/6CeCO019Tq4GSeZ3xa5ODMncDFfP66et/SYZk7gbK5rMsi8K8qPMJRGde1GkgOvOiziXu08RzEYzfJZY1i750eK3oXzP0RCKRSCQS/4xG4xvzQAXtu4TohwAAAABJRU5ErkJggg==',
+				}
 			    var labelIconPositions = {
-			        'jens': '0px 0px'
+			        'info': '0px 0px',
+					'settings': '0px 0px',
+					'vcard': '0px 0px',
+					'date': '0px 0px',
+					'chart': '0px 0px'
 			    }
+				
+				// config label icon
 			    if (typeof labelIconPositions[settings.label.icon] != 'undefined') {
 			        settings.label.iconPosition = labelIconPositions[settings.label.icon];
+					settings.label.iconUrl = labelIconUrls[settings.label.icon];
 			    }
 			}
 
+			// tile content switch for multiple defined content elements
 			function changeContent(element, contentArray, oldIndex) {
 			    var nextIndex = (oldIndex == contentArray.length - 1) ? 0 : oldIndex + 1;
-			    element.html(contentArray[nextIndex]);
-			    window.setTimeout(function () { changeContent(element, contentArray, nextIndex); }, 1000);
+				var newElement = element.clone();
+				element.after(newElement.css({'margin-top' : '-' + settings.computedWidth  + 'px',
+											  'height': settings.computedWidth  + 'px', 
+											  '-webkit-box-shadow': '0 8px 6px -6px black',
+											  '-moz-box-shadow': '0 8px 6px -6px black',
+											  'box-shadow': '0 8px 6px -6px black'})
+										.html(contentArray[nextIndex])
+										.animate({'margin-top' : 0}, 
+												 {complete:  function() { element.remove(); }, easing: 'linear' })
+							  );
+							  
+			    window.setTimeout(function () { changeContent(newElement, contentArray, nextIndex); }, Math.floor((Math.random()*10000)+1000));
 			}
 
+			// build the tile
             return this.each(function () {
                 var $this = $(this);
                 var thisSettings = $.extend({}, settings);
-
-				//var width = 250;
-				//var height = 250;
-				//$('<style>').text('.st_tile .st_tileContent img { width: ' + width + 'px; height: ' + height + 'px; }')
-				//			.appendTo('head');
-							
-				//$('<style>').text('.st_one { width: ' + width + 'px; height: ' + height + 'px; }')
-				//			.appendTo('head');
-
 				
                 // config label
                 if (thisSettings.label.text == '') {
@@ -163,28 +188,36 @@
                         thisSettings.label.sub = $this.data('sublabel');
                     }
                 }
+				
 				// config tooltip
 				if(thisSettings.toolTip != '') {
 					$this.attr('title', thisSettings.toolTip)
 				}
 				
-		
                 // config content
 				if (thisSettings.content == '') {
                     thisSettings.content = $this.html();
                 }
-				if (/(jpg|gif|png|JPG|GIF|PNG|JPEG|jpeg)$/.test(thisSettings.content)){
-					thisSettings.content = '<img src="' + thisSettings.content + '" />';
-				}
+				// make content array
 				thisSettings.computedContent = [];
 				if (thisSettings.format.switchContent) {
 				    var i = 0;
 				    $this.children().each(function () {
-				        thisSettings.computedContent[i] = $(this).html();
+						// if content is a image path add image tags
+						if(/(jpg|gif|png|JPG|GIF|PNG|JPEG|jpeg)$/.test($(this).html())) { //ToDo: do the css manipulation somewhere else..
+							thisSettings.computedContent[i] =  '<img src="' + $(this).html() + '" style="border-width:0px; margin:-10px;" />';
+						} else {
+							thisSettings.computedContent[i] = $(this).html();
+						}
 				        i++;
 				    });
 				} else {
-				    thisSettings.computedContent[0] = thisSettings.content;
+					// if content is a image path add image tags
+					if(/(jpg|gif|png|JPG|GIF|PNG|JPEG|jpeg)$/.test(thisSettings.content)) {
+						thisSettings.computedContent[0] =  '<img src="' + thisSettings.content + '" />';
+					} else {
+						thisSettings.computedContent[0] = thisSettings.content;
+					}
 				}
 
                 // modify cursor
@@ -193,7 +226,7 @@
                     cursor = 'pointer';
                 }
 
-                // prepare label
+                // prepare label css
                 var labelIcon = '';
                 if (thisSettings.label.iconUrl != '') {
                     labelIcon = '<div style="background-image: url(' + thisSettings.label.iconUrl + '); '
@@ -233,22 +266,48 @@
                     'filter': 'progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=50)',
                     'background-color': thisSettings.colors.backgroundTitle
                 };
-
-                // create tile
-                $this.addClass('st_tile')
-					 .css('background-color', thisSettings.colors.backgroundContent)
+				
+				// config opacity on hover
+				var opacity = 1;
+				if (thisSettings.format.hoverEffect) {
+					opacity = '.75';
+					
+					$this.hover(function () {
+						$this.css('opacity', '1')
+							 .css('-ms-filter', 'progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=100)')
+							 .css('filter', 'progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=100)');
+					}, function () {
+						$this.css('opacity', opacity)
+							 .css('-ms-filter', 'progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=' + opacity +')')
+							 .css('filter', 'progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=' + opacity +')');
+					});
+				}
+				
+				// create tile
+                $this.css('background-color', thisSettings.colors.backgroundContent)
 					 .css('cursor', cursor)
                      .css('width', thisSettings.computedWidth+'px')
                      .css('height', thisSettings.computedHeight + 'px')
                      .css('margin', thisSettings.computedMargin + 'px')
+					 .css('opacity', opacity)
+					 .css('-ms-filter', 'progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=' + opacity +')')
+					 .css('filter', 'progid:DXImageTransform.st_Microsoft.st_Alpha(opacity=' + opacity +')')
+					 .css('float', 'left')
+					 .css('text-align','left')
+					 .css('padding','0px')
+					 .css('position','relative')
+					 .css('overflow','hidden')	
 					 .html('')
-                     .append($("<div>")
-                                .attr('class', 'st_tileContent')
+                     .append($("<div>") // add tile content
                                 .css('padding', thisSettings.computedPadding + 'px')
                                 .css('overflow', 'hidden')
                                 .css('width', (thisSettings.computedWidth - 2 * thisSettings.computedPadding) + 'px')
 							    .css('color', thisSettings.colors.textContent + 'px')
+								.css('position', 'absolute') // needed by the switch content (animation) function
+								.css('background-color', thisSettings.colors.backgroundContent) // needed by the switch content (animation) function
 								.html(thisSettings.computedContent[0]));
+								
+				// animation == 'slideup' add title area and effect
                 if (thisSettings.label.animation == 'slideup') {
                     var $label = $('<div/>')
                                .css(labelCss)
@@ -265,6 +324,7 @@
                     }, function () {
                         $label.animate({ 'height': '10px' });
                     });
+				// animation == 'slidesub' add title area and effect
                 } else if (thisSettings.label.animation == 'slidesub') {
                     var labelHeight = (thisSettings.label.text == '') ? 0 : thisSettings.computedLabelHeight;
                     var subLabel = '<p style="white-space:normal; '
@@ -285,6 +345,7 @@
                     }, function () {
                         $label.animate({ 'height': labelHeight + 'px' });
                     });
+				// animation == 'transparent' add title area and effect
                 } else if (thisSettings.label.animation == 'transparent') {
                     var $label = $('<div/>')
                                .css(labelCss)
@@ -297,7 +358,8 @@
                                        .html(labelIcon + thisSettings.label.text));
                     $this.append($label);
                 }
-
+				
+				// resize image to tile size
                 if (thisSettings.format.resizeImages) {
                     $this.find('img')
                                 .css('border-width', '0px')
@@ -305,8 +367,10 @@
                                 .css('width', thisSettings.computedWidth + 'px')
                                 .css('height', thisSettings.computedHeight + 'px');
                 }
+				
+				// start content switch function
                 if (thisSettings.format.switchContent) {
-                    window.setTimeout(function () { changeContent($this.children(':first'), thisSettings.computedContent, 0); }, 1000);
+                    window.setTimeout(function () { changeContent($this.children(':first'), thisSettings.computedContent, 0); }, Math.floor((Math.random()*10000)+1000));
                 }
             });
         }
