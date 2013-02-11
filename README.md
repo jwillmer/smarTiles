@@ -15,16 +15,20 @@ License Terms
 --------
 **[The MIT License (MIT)][3]**
 
+jQuery Plugin Registry
+--------
+**[jQuery smarTiles][4]**
 
 NuGet Packages
 --------
-**[jQuery.smarTiles][4]**
+**[jQuery.smarTiles][5]**
 
-**[jQuery.smarTiles.Sample][5]**
+**[jQuery.smarTiles.Sample][6]**
 
 
   [1]: http://jwillmer.de
   [2]: http://tobi-maier.de
   [3]: http://opensource.org/licenses/MIT
-  [4]: https://nuget.org/packages/jQuery.smarTiles/
-  [5]: https://nuget.org/packages/jQuery.smarTiles.Sample/
+  [4]: http://plugins.jquery.com/smarTiles/
+  [5]: https://nuget.org/packages/jQuery.smarTiles/
+  [6]: https://nuget.org/packages/jQuery.smarTiles.Sample/
