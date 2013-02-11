@@ -13,7 +13,7 @@ Authors
 
 License Terms
 --------
-**[The MIT License (MIT)][5]**
+**[The MIT License (MIT)][3]**
 
 
 NuGet Packages
@@ -23,8 +23,8 @@ NuGet Packages
 **[jQuery.smarTiles.Sample][5]**
 
 
-  [1]: https://nuget.org/packages/jQuery.smarTiles.Sample/
-  [2]: https://nuget.org/packages/jQuery.smarTiles.Sample/
+  [1]: http://jwillmer.de
+  [2]: http://tobi-maier.de
   [3]: http://opensource.org/licenses/MIT
   [4]: https://nuget.org/packages/jQuery.smarTiles/
   [5]: https://nuget.org/packages/jQuery.smarTiles.Sample/
