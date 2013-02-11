@@ -27,6 +27,7 @@
 	@author: Willmer, Jens & Maier, Tobias
 	@url: https://github.com/jwillmer/smarTiles
 	@documentation: https://github.com/jwillmer/smarTiles/wiki
+	@version: 0.0.1
 */
 ; (function ($) {
     $.fn.extend({

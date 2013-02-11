@@ -1,0 +1,37 @@
+{
+  "name": "smarTiles",
+  "title": "jQuery smarTiles",
+  "description": "A jQuery plugin that creates colorfull tiles similar to Windows 8 tiles.",
+  "keywords": [
+    "jquery",
+    "tile",
+	"metro",
+    "plugins"
+  ],
+  "version": "0.0.1",
+  "author": {
+    "name": "Maier, Tobias & Willmer, Jens"
+  },
+  "maintainers": [
+  {
+    "name": "Maier, Tobias",
+    "url": "http://tobi-maier.de"
+  },
+  {
+    "name": "Willmer, Jens",
+    "url": "http://jwillmer.de"
+  }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "bugs": "https://github.com/jwillmer/smarTiles/issues",
+  "docs": "https://github.com/jwillmer/smarTiles#readme",
+  "download": "https://github.com/jwillmer/smarTiles/archive/master.zip",
+  "dependencies": {
+    "jquery": ">=1.9"
+  }
+}

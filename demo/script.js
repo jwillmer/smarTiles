@@ -18,7 +18,7 @@ $(document).ready(function() {
 	
 	// color schema demo
 	$('#tile3').smarTiles({ colorScheme: 'red'});
-	$('#tile4').smarTiles({ colorScheme: 'green', content: '../test.png', label: { icon: '' } });
+	$('#tile4').smarTiles({ colorScheme: 'green', content: 'test.png', label: { icon: '' } });
 	
 	// animated content demo
 	$('#tile5').smarTiles({ colorScheme: 'yellow', toolTip: 'Hello World!', xSize: 2, ySize: 1, format: { switchContent: true } });
