@@ -5,6 +5,8 @@ A jQuery plugin that creates colorfull tiles similar to Windows 8 tiles.
 
 The plugin is beyond from stable. Although the basic functionality works this plugin should be used only for test purposes.
 
+A demo can be found at **[smarTiles Page][7]**
+
 Authors
 -------
 **[Willmer, Jens][1]**
@@ -32,3 +34,4 @@ NuGet Packages
   [4]: http://plugins.jquery.com/smarTiles/
   [5]: https://nuget.org/packages/jQuery.smarTiles/
   [6]: https://nuget.org/packages/jQuery.smarTiles.Sample/
+  [7]: http://jwillmer.github.io/smarTiles
